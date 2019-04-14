@@ -9,5 +9,8 @@ def docker_compose_restart(project_name):
 
     # go to target project folder
     os.chdir(f'/root/projects/{project_name}')
+    git_pull_cmd = 'git pull origin dev'
+    os.system(git_pull_cmd)
     docker_compose_restart_cmd = 'docker-compose restart'
     os.system(docker_compose_restart_cmd)
+    return

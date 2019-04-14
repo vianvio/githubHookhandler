@@ -1,5 +1,5 @@
 from aiohttp import web
-from .handlers import docker_handlers
+from handlers import docker_handlers
 
 
 def get_route_config(routes):

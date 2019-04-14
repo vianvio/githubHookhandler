@@ -1,5 +1,6 @@
 from aiohttp import web
-from .router import get_route_config
+from router import get_route_config
+
 
 def main():
     routes = web.RouteTableDef()

@@ -1,16 +1,22 @@
 from aiohttp import web
+import asyncio
 from router import get_route_config
 
 
-def main():
+async def main():
     routes = web.RouteTableDef()
 
     get_route_config(routes)
 
     app = web.Application()
     app.add_routes(routes)
-    web.run_app(app)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    site = web.TCPSite(runner, 'localhost', 5000)
+    await site.start()
 
 
 if __name__ == '__main__':
-    main()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())
+    loop.run_forever()

@@ -6,7 +6,7 @@ _clientSession = aiohttp.ClientSession()
 
 
 def send_start_deploy_msg(project_name):
-    _clientSession.post(
+    await _clientSession.post(
         get_config()['robotUrl'],
         data=json.dumps({
             'msgtype': 'text',
@@ -15,7 +15,7 @@ def send_start_deploy_msg(project_name):
 
 
 def send_finish_deploy_msg(project_name):
-    _clientSession.post(
+    await _clientSession.post(
         get_config()['robotUrl'],
         data=json.dumps({
             'msgtype': 'text',

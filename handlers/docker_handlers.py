@@ -6,8 +6,7 @@ from dingding_robot import deploy_message
 def docker_compose_restart(project_name):
     # print current working dir info
     deploy_message.send_start_deploy_msg(project_name)
-    current_dir_info = 'ls -la'
-    os.system(current_dir_info)
+    current_working_dir = os.getcwd()
 
     # go to target project folder
     os.chdir(f'{get_config()["workspace"]}{project_name}')
@@ -22,4 +21,7 @@ def docker_compose_restart(project_name):
 
     docker_compose_restart_cmd = 'docker-compose up -d'
     os.system(docker_compose_restart_cmd)
+
+    # back to git hook server dir
+    os.chdir(current_working_dir)
     deploy_message.send_finish_deploy_msg(project_name)

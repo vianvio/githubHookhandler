@@ -1,11 +1,11 @@
 import os
 from util import get_config
-import dingding_robot
+from dingding_robot import deploy_message
 
 
 def docker_compose_restart(project_name):
     # print current working dir info
-    dingding_robot.send_start_deploy_msg(project_name)
+    deploy_message.send_start_deploy_msg(project_name)
     current_dir_info = 'ls -la'
     os.system(current_dir_info)
 
@@ -22,4 +22,4 @@ def docker_compose_restart(project_name):
 
     docker_compose_restart_cmd = 'docker-compose up -d'
     os.system(docker_compose_restart_cmd)
-    dingding_robot.send_finish_deploy_msg(project_name)
+    deploy_message.send_finish_deploy_msg(project_name)

@@ -15,7 +15,7 @@ def docker_compose_restart(project_name):
     shut_down_docker_compose = 'docker-compose down'
     os.system(shut_down_docker_compose)
 
-    remove_project_docker_image = f'docker rmi {project_name}:latest'
+    remove_project_docker_image = f'docker rmi {project_name.lower()}:latest'
     os.system(remove_project_docker_image)
 
     docker_compose_restart_cmd = 'docker-compose up -d'

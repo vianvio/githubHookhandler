@@ -29,4 +29,5 @@ def send_finish_deploy_msg(project_name):
 
 
 def send_message(url, message):
-    asyncio.ensure_future(session.post(url, data=message))
+    headers = {'content-type': 'application/json'}
+    asyncio.ensure_future(session.post(url, data=message, headers=headers))

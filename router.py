@@ -7,3 +7,7 @@ def get_route_config(routes):
     async def docker_compose_restart_handler(request):
         docker_handlers.docker_compose_restart(request.match_info['applicationName'])
         return web.Response(text="received, thank you")
+
+    @routes.get('/{applicationName}')
+    async def serve_test(request):
+        return web.Response(text=f"app name {request.match_info['applicationName']}")

@@ -24,4 +24,4 @@ def docker_compose_restart(project_name):
 
     # back to git hook server dir
     os.chdir(current_working_dir)
-    await deploy_message.send_finish_deploy_msg(project_name)
+    deploy_message.send_finish_deploy_msg(project_name)

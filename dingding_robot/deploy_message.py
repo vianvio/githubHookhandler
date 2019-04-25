@@ -11,7 +11,9 @@ def send_start_deploy_msg(project_name):
         get_config()['robotUrl'],
         json.dumps({
             'msgtype': 'text',
-            'text': f'{project_name}开始部署'
+            'text': {
+                'content': f'{project_name}开始部署'
+            }
         }))
 
 
@@ -20,7 +22,9 @@ def send_finish_deploy_msg(project_name):
         get_config()['robotUrl'],
         json.dumps({
             'msgtype': 'text',
-            'text': f'{project_name}部署完毕'
+            'text': {
+                'content': f'{project_name}部署完毕'
+            }
         }))
 
 

@@ -8,7 +8,6 @@ session = aiohttp.ClientSession()
 
 def send_start_deploy_msg(project_name):
     send_message(
-        get_config()['robotUrl'],
         json.dumps({
             'msgtype': 'text',
             'text': {
@@ -19,7 +18,6 @@ def send_start_deploy_msg(project_name):
 
 def send_finish_deploy_msg(project_name):
     send_message(
-        get_config()['robotUrl'],
         json.dumps({
             'msgtype': 'text',
             'text': {
@@ -28,6 +26,6 @@ def send_finish_deploy_msg(project_name):
         }))
 
 
-def send_message(url, message):
+def send_message(message):
     headers = {'content-type': 'application/json'}
-    asyncio.ensure_future(session.post(url, data=message, headers=headers))
+    asyncio.ensure_future(session.post(get_config()['robotUrl'], data=message, headers=headers))

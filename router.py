@@ -6,7 +6,7 @@ from dingding_robot import deploy_message
 def get_route_config(routes):
     @routes.post('/sendMessage')
     async def common_send_message(request):
-        await print(request.json())
+        print(await request.json())
         # await deploy_message.send_message(request.json())
         return web.Response(text="message sent")
 

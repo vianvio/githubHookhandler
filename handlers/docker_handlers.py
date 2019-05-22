@@ -11,7 +11,7 @@ def docker_compose_restart(project_name):
     deploy_message.send_finish_deploy_msg(project_name)
 
 
-def handle_docker_restart(project_name):
+async def handle_docker_restart(project_name):
     current_working_dir = os.getcwd()
 
     # go to target project folder

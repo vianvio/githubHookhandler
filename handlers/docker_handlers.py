@@ -7,7 +7,7 @@ from dingding_robot import deploy_message
 def docker_compose_restart(project_name):
     # print current working dir info
     deploy_message.send_start_deploy_msg(project_name)
-    asyncio.ensure_future(handle_docker_restart())
+    asyncio.ensure_future(handle_docker_restart(project_name))
     deploy_message.send_finish_deploy_msg(project_name)
 
 

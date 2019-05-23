@@ -10,7 +10,7 @@ def docker_compose_restart(project_name):
     asyncio.ensure_future(handle_docker_restart(project_name))
 
 
-def handle_docker_restart(project_name):
+async def handle_docker_restart(project_name):
     current_working_dir = os.getcwd()
 
     # go to target project folder

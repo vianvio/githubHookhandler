@@ -1,14 +1,6 @@
 import os
-import asyncio
 from util import get_config
 from dingding_robot import deploy_message
-
-
-def docker_compose_restart(project_name):
-    # print current working dir info
-    deploy_message.send_start_deploy_msg(project_name)
-    asyncio.ensure_future(handle_docker_restart(project_name))
-
 
 async def handle_docker_restart(project_name):
     current_working_dir = os.getcwd()
@@ -29,4 +21,4 @@ async def handle_docker_restart(project_name):
 
     # back to git hook server dir
     os.chdir(current_working_dir)
-    deploy_message.send_finish_deploy_msg(project_name)
+    await deploy_message.send_finish_deploy_msg(project_name)

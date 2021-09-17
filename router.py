@@ -10,7 +10,7 @@ loop = asyncio.get_event_loop()
 def get_route_config(routes):
     @routes.post('/sendMessage')
     async def common_send_message(request):
-        deploy_message.send_message(await request.text())
+        await deploy_message.send_message(await request.text())
         return web.Response(text="message sent")
 
     @routes.post('/{applicationName}')

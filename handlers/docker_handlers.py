@@ -10,6 +10,9 @@ async def handle_docker_restart(project_name):
     git_pull_cmd = 'git pull origin dev'
     os.system(git_pull_cmd)
 
+    pnpm_install_cmd = 'pnpm install'
+    os.system(pnpm_install_cmd)
+
     shut_down_docker_compose = 'docker-compose down'
     os.system(shut_down_docker_compose)
 
